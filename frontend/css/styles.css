@@ -65,3 +65,16 @@ h1 {
     display: flex;
     justify-content: space-between;
 }
+
+#project-list button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #dc2626;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#project-list button:hover {
+    background-color: #b91c1c;
+}

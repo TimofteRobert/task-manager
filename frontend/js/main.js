@@ -7,7 +7,20 @@ async function loadProjects() {
 
   for (const project of projects) {
     const li = document.createElement('li');
-    li.textContent = `${project.name} (${project.tasks.length} tasks)`;
+
+    const name = document.createElement("span");
+    name.textContent = `${project.name} (${project.tasks.length} tasks)`;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", async () => {
+      if (!confirm(`Delete "${project.name}" and all its tasks?`)) return;
+      await api.deleteProject(project.id);
+      await loadProjects();
+    });
+
+    li.appendChild(name);
+    li.appendChild(deleteButton);
     list.appendChild(li);
   }
 }
